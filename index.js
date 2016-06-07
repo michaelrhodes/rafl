@@ -1,34 +1,35 @@
-/**
- * Expose `requestAnimationFrame()`.
- */
-
-exports = module.exports = window.requestAnimationFrame
-  || window.webkitRequestAnimationFrame
-  || window.mozRequestAnimationFrame
-  || fallback;
+var bind = Function.prototype.bind
 
 /**
- * Fallback implementation.
+ * `requestAnimationFrame()`
  */
 
-var prev = new Date().getTime();
-function fallback(fn) {
-  var curr = new Date().getTime();
-  var ms = Math.max(0, 16 - (curr - prev));
-  var req = setTimeout(fn, ms);
-  prev = curr;
-  return req;
+var request = this.requestAnimationFrame
+  || this.webkitRequestAnimationFrame
+  || this.mozRequestAnimationFrame
+  || fallback
+
+var prev = +new Date
+function fallback (fn) {
+  var curr = +new Date
+  var ms = Math.max(0, 16 - (curr - prev))
+  var req = setTimeout(fn, ms)
+  return prev = curr, req
 }
 
 /**
- * Cancel.
+ * `cancelAnimationFrame()`
  */
 
-var cancel = window.cancelAnimationFrame
-  || window.webkitCancelAnimationFrame
-  || window.mozCancelAnimationFrame
-  || window.clearTimeout;
+var cancel = this.cancelAnimationFrame
+  || this.webkitCancelAnimationFrame
+  || this.mozCancelAnimationFrame
+  || clearTimeout
 
-exports.cancel = function(id){
-  cancel.call(window, id);
-};
+if (bind) {
+  request = bind.call(request, this)
+  cancel = bind.call(cancel, this)
+}
+
+exports = module.exports = request
+exports.cancel = cancel
