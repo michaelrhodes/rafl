@@ -8,6 +8,9 @@
     "performance"
   ],
   "main": "index.js",
+  "dependencies": {
+    "global": "~4.3.0"
+  },
   "devDependencies": {
     "tape": "~4.5.1"
   },
@@ -22,8 +25,5 @@
     "url": "git+https://github.com/michaelrhodes/raf.git"
   },
   "author": "Michael Rhodes",
-  "license": "MIT",
-  "dependencies": {
-    "global": "^4.3.0"
-  }
+  "license": "MIT" 
 }

@@ -1,4 +1,4 @@
-var global = require("global")
+var global = require('global')
 
 /**
  * `requestAnimationFrame()`
