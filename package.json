@@ -22,5 +22,8 @@
     "url": "git+https://github.com/michaelrhodes/raf.git"
   },
   "author": "Michael Rhodes",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "global": "^4.3.0"
+  }
 }

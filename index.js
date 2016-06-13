@@ -1,12 +1,12 @@
-var bind = Function.prototype.bind
+var global = require("global")
 
 /**
  * `requestAnimationFrame()`
  */
 
-var request = this.requestAnimationFrame
-  || this.webkitRequestAnimationFrame
-  || this.mozRequestAnimationFrame
+var request = global.requestAnimationFrame
+  || global.webkitRequestAnimationFrame
+  || global.mozRequestAnimationFrame
   || fallback
 
 var prev = +new Date
@@ -21,14 +21,14 @@ function fallback (fn) {
  * `cancelAnimationFrame()`
  */
 
-var cancel = this.cancelAnimationFrame
-  || this.webkitCancelAnimationFrame
-  || this.mozCancelAnimationFrame
+var cancel = global.cancelAnimationFrame
+  || global.webkitCancelAnimationFrame
+  || global.mozCancelAnimationFrame
   || clearTimeout
 
-if (bind) {
-  request = bind.call(request, this)
-  cancel = bind.call(cancel, this)
+if (Function.prototype.bind) {
+  request = request.bind(global)
+  cancel = cancel.bind(global)
 }
 
 exports = module.exports = request
