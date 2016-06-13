@@ -49,9 +49,9 @@ animate()
 
 | compression    |    size |
 | :------------- | ------: |
-| rafl.js        | 1.19 kB |
-| rafl.min.js    |   865 B |
-| rafl.min.js.gz |   449 B |
+| rafl.js        | 1.66 kB |
+| rafl.min.js    | 1.14 kB |
+| rafl.min.js.gz |   523 B |
 
 
 ### License
