@@ -1,4 +1,4 @@
-var global = typeof global !== "undefined" ? global : window;
+var global = require("global")
 
 /**
  * `requestAnimationFrame()`
@@ -25,6 +25,11 @@ var cancel = global.cancelAnimationFrame
   || global.webkitCancelAnimationFrame
   || global.mozCancelAnimationFrame
   || clearTimeout
+
+if (Function.prototype.bind) {
+  request = request.bind(global)
+  cancel = cancel.bind(global)
+}
 
 exports = module.exports = request
 exports.cancel = cancel
